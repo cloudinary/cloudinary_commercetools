@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+Sitemap: https://autorepairgroup.dev.reference.be/sitemap.xml

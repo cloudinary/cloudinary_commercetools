@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.search img {
+  height: auto;
+  max-height: 35px;
+}
+
+.carousel .slick-prev {
+  left: 15px;
+  z-index: 1;
+}
+
+.carousel .slick-next {
+  right: 15px;
+}
+
+.carousel .slick-prev:before,
+.carousel .slick-next:before {
+  @apply text-black;
+}
+
+.carouselTrack .slick-track {
+  width: 100% !important;
+}
+
+.carousel .slick-active {
+  z-index: 10;
+}
+
+.carouselTrack .slick-vertical .slick-slide {
+  margin-bottom: 16px;
+}
+.carouselTrack .slick-vertical .slick-slide.slick-current {
+  border-bottom: 4px solid #ff7a02;
+}

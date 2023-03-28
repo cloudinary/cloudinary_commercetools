@@ -1,0 +1,13 @@
+{
+  "assets": "Assets",
+  "asset-name": "Name",
+  "asset-description": "Description",
+  "asset-source": "Source",
+  "products": "Products",
+  "product-id": "Id",
+  "product-sku": "SKU",
+  "product-name": "Name",
+  "product-not-found": "No product found!",
+  "product-owner": "Owner",
+  "product-type": "Product type"
+}
