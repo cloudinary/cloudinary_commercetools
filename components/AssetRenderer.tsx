@@ -20,7 +20,7 @@ const AssetRenderer = ({
   className,
 }: AssetRendererProps) => {
   const spinSetTags = asset.tags?.filter(x => x.includes('spinset')) ?? []
-  const isSpinset = !isThumbnail && spinSetTags.length > 0
+  const isSpinset = spinSetTags.length > 0
   const isVideo =
     !isSpinset && asset.sources[0].contentType?.startsWith('video')
   const isImage = !isSpinset && !isVideo
@@ -32,7 +32,13 @@ const AssetRenderer = ({
         'relative w-full': isThumbnail,
       })}
     >
-      {isSpinset && <AssetSpinset tags={asset.tags} />}
+      {isSpinset && (
+        <AssetSpinset
+          publicId={asset.sources[0].uri}
+          tags={asset.tags}
+          isThumbnail={isThumbnail}
+        />
+      )}
       {isImage && (
         <AssetImage
           publicId={asset.sources[0].uri}
