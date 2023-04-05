@@ -13,6 +13,10 @@ declare global {
       COMMERCETOOLS_PROJECTKEY: string
     }
   }
+
+  interface Window {
+    cloudinary: any
+  }
 }
 
 export type Mapping = {

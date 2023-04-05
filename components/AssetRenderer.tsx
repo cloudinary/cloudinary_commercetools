@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import {CtAsset} from 'lib/types'
 import AssetImage from './AssetImage'
 import AssetVideo from './AssetVideo'
+import AssetSpinset from './AssetSpinset'
 
 type AssetRendererProps = {
   asset: CtAsset
@@ -18,6 +19,12 @@ const AssetRenderer = ({
   isThumbnail = false,
   className,
 }: AssetRendererProps) => {
+  const spinSetTags = asset.tags?.filter(x => x.includes('spinset')) ?? []
+  const isSpinset = !isThumbnail && spinSetTags.length > 0
+  const isVideo =
+    !isSpinset && asset.sources[0].contentType?.startsWith('video')
+  const isImage = !isSpinset && !isVideo
+
   return (
     <div
       className={classNames(className, {
@@ -25,14 +32,16 @@ const AssetRenderer = ({
         'relative w-full': isThumbnail,
       })}
     >
-      {!asset.sources[0].contentType?.startsWith('video') ? (
+      {isSpinset && <AssetSpinset tags={asset.tags} />}
+      {isImage && (
         <AssetImage
           publicId={asset.sources[0].uri}
           isThumbnail={isThumbnail}
           width={width}
           height={height}
         />
-      ) : (
+      )}
+      {isVideo && (
         <AssetVideo
           publicId={asset.sources[0].uri}
           isThumbnail={isThumbnail}

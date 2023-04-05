@@ -6,6 +6,7 @@ import {appWithTranslation} from 'next-i18next'
 import {trpc} from '../utils/trpc'
 import NavBar from 'components/NavBar'
 import Doormat from 'components/Doormat'
+import Script from 'next/script'
 
 function MyApp({Component, pageProps}: AppProps) {
   return (
@@ -14,6 +15,7 @@ function MyApp({Component, pageProps}: AppProps) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+      <Script src="https://product-gallery.cloudinary.com/all.js" />
 
       <NavBar></NavBar>
       <main>

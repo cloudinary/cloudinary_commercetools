@@ -56,7 +56,7 @@ const AssetImage = ({
   const updateInfo = (url: string) => {
     // TODO: is there a better way to manipulate this url?
     const infoUrl = url.replace('upload/', 'upload/fl_getinfo,')
-    console.log('updateInfo', {url, infoUrl})
+    // console.log('updateInfo', {url, infoUrl})
 
     fetch(infoUrl)
       .then(res => {
