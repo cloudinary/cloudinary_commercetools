@@ -1,7 +1,7 @@
 import ProductPrice from 'components/elements/ProductPrice'
 import ProductList from 'components/ProductList'
 
-import {getName, getAllVariants} from 'lib/commercetools/productHelper'
+import {getName, getAllVariants, getUniqueAssets} from 'lib/commercetools/productHelper'
 import {useTranslation} from 'next-i18next'
 import {useRouter} from 'next/router'
 import Carousel from 'components/Carousel'
@@ -50,7 +50,7 @@ const ProductDetailPageLayout = ({
       </div>
       <div className="mb-16 pb-8 md:grid md:grid-cols-5 lg:mx-[10vw]">
         <div className="col-span-3">
-          <Carousel assets={currentVariant.assets} />
+          <Carousel assets={getUniqueAssets(currentVariant.assets)} />
         </div>
         <div className="md:col-span-2">
           <div className="flex flex-row justify-between text-3xl font-medium">

@@ -25,8 +25,30 @@ export const getPrice = (product: any): CtPrice | undefined => {
   return undefined
 }
 
-export const getAllAssets = (product: any): CtAsset[] =>
+export const getAllAssets = (product: any): CtAsset[] => 
   product?.masterData?.current?.masterVariant?.assets ?? []
+
+
+export const getUniqueAssets = (assets: CtAsset[]): CtAsset[] => {
+  // Only return unique assets, avoiding to return multiple assets from the same spinset
+  const uniqueAssets: CtAsset[] = []
+  const spinsets: string[] = []
+
+  assets.forEach(asset => {
+    const spinsetTags = asset.tags?.filter(tag => tag.includes('spinset'))
+    const isSpinset = spinsetTags.length > 0
+    if (!isSpinset) {
+      // Take all assets that are NOT spinsets
+      uniqueAssets.push(asset)
+    } else if (!spinsets.includes(spinsetTags[0])){
+      // Then add all unique spinsets (avoiding to add multiple thumbnails for the same spinset)
+      uniqueAssets.push(asset)
+      spinsets.push(spinsetTags[0])
+    }
+  })
+
+  return uniqueAssets
+}
 
 export const getImageAssets = (product: any): CtAsset[] =>
   getAllAssets(product).filter(

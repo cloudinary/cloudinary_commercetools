@@ -9,6 +9,7 @@ import {image} from '@cloudinary/url-gen/qualifiers/source'
 import {useEffect, useState} from 'react'
 
 export type AssetSpinsetProps = {
+  id: string
   publicId: string
   tags: string[]
   width?: number
@@ -21,14 +22,16 @@ const cloudinaryConfig = new CloudConfig({
 })
 
 const AssetSpinset = ({
+  id,
   publicId, 
   width, 
   height, 
   tags, 
   isThumbnail = false
 }: AssetSpinsetProps) => {
-  const [isLoaded, setLoaded] = useState(false)
-  
+  const [isLoaded, setLoaded] = useState(false) 
+  const galleryName = `my-gallery-${id}`
+
   useEffect(() => {
     if (!isThumbnail) {
       // Loop until window.cloudinary object is available
@@ -47,13 +50,11 @@ const AssetSpinset = ({
       const tag = tags.find(x => x.includes('spinset'))
       if (tag) {
         const myGallery = window.cloudinary.galleryWidget({
-          container: '#my-gallery',
+          container: `#${galleryName}`,
           carouselStyle: 'none',
           cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
           mediaAssets: [{tag: tag, mediaType: "spin"}],
         })
-
-        console.log('AssetSpinset.1', {tags, myGallery})
 
         myGallery.render()
       }
@@ -81,7 +82,7 @@ const AssetSpinset = ({
 
   return (
     <div className="relative">
-      <div id="my-gallery" />
+      <div id={galleryName} />
     </div>
   )
 }
