@@ -34,6 +34,7 @@ const AssetRenderer = ({
     >
       {isSpinset && (
         <AssetSpinset
+          id={asset.id}
           publicId={asset.sources[0].uri}
           tags={asset.tags}
           isThumbnail={isThumbnail}
