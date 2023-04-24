@@ -3,8 +3,7 @@ import {GetStaticProps} from 'next'
 import {Params} from '../lib/types'
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
 import {CloudConfig, CloudinaryImage} from '@cloudinary/url-gen'
-import {accessibility, AdvancedImage, lazyload, placeholder, responsive} from '@cloudinary/react'
-import {fill, thumbnail} from '@cloudinary/url-gen/actions/resize'
+import {AdvancedImage, lazyload, placeholder, responsive} from '@cloudinary/react'
 
 const cloudinaryConfig = new CloudConfig({
   cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
