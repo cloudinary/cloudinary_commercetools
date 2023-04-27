@@ -55,6 +55,9 @@ const AssetSpinset = ({
           cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
           mediaAssets: [{tag: tag, mediaType: "spin"}],
           queryParam: "AN",
+          spinProps: {
+            spinDirection: "clockwise"
+          }
         })
 
         myGallery.render()
