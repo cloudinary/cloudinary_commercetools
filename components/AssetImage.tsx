@@ -78,7 +78,11 @@ const AssetImage = ({
   }
 
   useEffect(() => {
-    const cldImage = new CloudinaryImage(publicId, cloudinaryConfig)
+    const cldImage = new CloudinaryImage(publicId, cloudinaryConfig, {
+      queryParams: {
+        _i: 'AN'
+      }
+    })
 
     if (isThumbnail) {
       cldImage.resize(

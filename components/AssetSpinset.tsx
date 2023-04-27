@@ -54,6 +54,7 @@ const AssetSpinset = ({
           carouselStyle: 'none',
           cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
           mediaAssets: [{tag: tag, mediaType: "spin"}],
+          queryParam: "AN",
         })
 
         myGallery.render()
@@ -62,7 +63,11 @@ const AssetSpinset = ({
   }, [tags, isLoaded])
 
   if (isThumbnail) {
-    const cldImage = new CloudinaryImage(publicId, cloudinaryConfig)
+    const cldImage = new CloudinaryImage(publicId, cloudinaryConfig, {
+      queryParams: {
+        _i: 'AN'
+      }
+    })
     cldImage
       .resize(thumbnail()
         .width(width ?? 136)
