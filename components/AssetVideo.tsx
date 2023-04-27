@@ -51,8 +51,8 @@ const AssetVideo = ({
 
   video.resize(
     fill()
-      .width(width ?? 500)
-      .height(height ?? 800),
+      .width(width ?? 600)
+      .height(height ?? 700),
   )
 
   return (
