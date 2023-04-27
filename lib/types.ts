@@ -69,5 +69,8 @@ export type CtAsset = {
   name: {
     'en-US': string
   }
+  description: {
+    'en-US': string
+  }
   tags: string[]
 }

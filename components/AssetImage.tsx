@@ -7,6 +7,7 @@ import classNames from 'classnames'
 
 export type AssetImageProps = {
   publicId: string | undefined
+  altText?: string
   width?: number
   height?: number
   isThumbnail?: boolean
