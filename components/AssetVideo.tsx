@@ -16,6 +16,7 @@ export type AssetVideoProps = {
   width?: number
   height?: number
   isThumbnail?: boolean
+  forceImage?: boolean
 }
 
 const AssetVideo = ({
@@ -23,6 +24,7 @@ const AssetVideo = ({
   width,
   height,
   isThumbnail = false,
+  forceImage = false,
 }: AssetVideoProps) => {
   const cloudinaryConfig = new CloudConfig({
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
@@ -54,6 +56,16 @@ const AssetVideo = ({
       .width(width ?? 600)
       .height(height ?? 700),
   )
+
+  if (forceImage) {
+    video.format('jpg')
+
+    return (
+      <div>
+        <AdvancedImage cldImg={video} />
+      </div>
+    )
+  }
 
   return (
     <div>

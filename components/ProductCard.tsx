@@ -4,11 +4,13 @@ import {
   getName,
   getPrice,
   getImageAssets,
+  getAllAssets,
 } from 'lib/commercetools/productHelper'
 import Image from 'next/image'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import ProductPrice from './elements/ProductPrice'
+import AssetRenderer from './AssetRenderer'
 
 export type ProductCardProps = {
   product: any
@@ -17,7 +19,7 @@ export type ProductCardProps = {
 
 const ProductCard = ({product, isSmall = false}: ProductCardProps) => {
   const {locale} = useRouter()
-  const imageAssets = getImageAssets(product)
+  const imageAssets = getAllAssets(product)
 
   return (
     <div className=" overflow-hidden transition-all duration-300 ">
@@ -26,9 +28,10 @@ const ProductCard = ({product, isSmall = false}: ProductCardProps) => {
         className="block hover:bg-black hover:text-white"
       >
         {imageAssets.length > 0 ? (
-          <AssetImage
-            publicId={getAssetUri(imageAssets[0])}
+          <AssetRenderer
+            asset={imageAssets[0]}
             height={isSmall ? 330 : 700}
+            forceImage
           />
         ) : (
           <Image

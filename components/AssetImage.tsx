@@ -54,9 +54,7 @@ const AssetImage = ({
   // observer.observe({ entryTypes: [ "resource"]})
 
   const updateInfo = (url: string) => {
-    // TODO: is there a better way to manipulate this url?
     const infoUrl = url.replace('upload/', 'upload/fl_getinfo,')
-    // console.log('updateInfo', {url, infoUrl})
 
     fetch(infoUrl)
       .then(res => {
@@ -67,7 +65,7 @@ const AssetImage = ({
       .then((res: AssetInfo) => {
         const newInfo = info ? {...info} : {...res}
         if (info) {
-          newInfo.output = res.output
+          newInfo.output = res?.output
           newInfo.updates = (newInfo.updates ?? 0) + 1
         } else {
           newInfo.updates = 0
@@ -104,6 +102,7 @@ const AssetImage = ({
     if (!isThumbnail) {
       updateInfo(cldImage.toURL())
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [publicId, isThumbnail])
 
   if (isThumbnail) {

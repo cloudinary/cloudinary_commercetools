@@ -9,6 +9,7 @@ type AssetRendererProps = {
   width?: number
   height?: number
   isThumbnail?: boolean
+  forceImage?: boolean
   className?: string
 }
 
@@ -17,6 +18,7 @@ const AssetRenderer = ({
   width,
   height,
   isThumbnail = false,
+  forceImage = false,
   className,
 }: AssetRendererProps) => {
   const spinSetTags = asset.tags?.filter(x => x.includes('spinset')) ?? []
@@ -52,6 +54,7 @@ const AssetRenderer = ({
         <AssetVideo
           publicId={asset.sources[0].uri}
           isThumbnail={isThumbnail}
+          forceImage={forceImage}
           width={width}
           height={height}
         />
