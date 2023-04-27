@@ -20,6 +20,7 @@ function TestPage() {
     'ecommsamples/Vintage Leather Bag/SplitShire-5013'
 
   const cldImage = new CloudinaryImage(publicId, cloudinaryConfig, {
+    analytics: false,
     queryParams: {
       _i: 'AN'
     }

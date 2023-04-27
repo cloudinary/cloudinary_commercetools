@@ -79,6 +79,7 @@ const AssetImage = ({
 
   useEffect(() => {
     const cldImage = new CloudinaryImage(publicId, cloudinaryConfig, {
+      analytics: false,
       queryParams: {
         _i: 'AN'
       }
