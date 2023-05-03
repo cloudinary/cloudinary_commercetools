@@ -1,13 +1,13 @@
 import ProductPrice from 'components/elements/ProductPrice'
 import ProductList from 'components/ProductList'
 
-import {getName, getAllVariants, getUniqueAssets} from 'lib/commercetools/productHelper'
+import {getName, getAllVariants} from 'lib/commercetools/productHelper'
 import {useTranslation} from 'next-i18next'
 import {useRouter} from 'next/router'
-import Carousel from 'components/Carousel'
 import Breadcrumb from 'components/elements/Breadcrumb'
 import ProductVariants from 'components/elements/ProductVariants'
 import {useEffect, useState} from 'react'
+import GalleryWidget from 'components/GalleryWidget'
 
 type ProductDetailPageProps = {
   product: any
@@ -49,8 +49,9 @@ const ProductDetailPageLayout = ({
         <Breadcrumb product={product} locale={locale} />
       </div>
       <div className="mb-16 pb-8 md:grid md:grid-cols-5 lg:mx-[10vw]">
-        <div className="col-span-3">
-          <Carousel assets={getUniqueAssets(currentVariant.assets)} />
+        <div className="col-span-3 mr-8">
+          {/* <Carousel assets={getUniqueAssets(currentVariant.assets)} /> */}
+          <GalleryWidget productId={product.id} variant={currentVariant} />
         </div>
         <div className="md:col-span-2">
           <div className="flex flex-row justify-between text-3xl font-medium">
