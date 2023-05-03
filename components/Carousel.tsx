@@ -48,6 +48,13 @@ const Carousel = ({assets}: CarouselProps) => {
     verticalSwiping: true,
   }
 
+  const sortedAssets = assets.sort((a, b) => {
+    const sortOrderA = a.custom?.fields?.sortOrder ?? '';
+    const sortOrderB = b.custom?.fields?.sortOrder ?? '';
+
+    return sortOrderA > sortOrderB ? 1 : -1
+  })
+
   return (
     <div className="flex ">
       <div className="carouselTrack mr-4 max-h-[23rem] w-12 lg:max-h-[36rem] lg:w-24 3xl:max-h-[45rem] 3xl:w-32">
@@ -56,7 +63,7 @@ const Carousel = ({assets}: CarouselProps) => {
           asNavFor={navs.nav1 ?? undefined}
           {...thumbnailConfig}
         >
-          {assets.map(asset => (
+          {sortedAssets.map(asset => (
             <AssetRenderer key={asset.id} asset={asset} isThumbnail />
           ))}
         </Slider>
@@ -67,7 +74,7 @@ const Carousel = ({assets}: CarouselProps) => {
           asNavFor={navs.nav2 ?? undefined}
           {...sliderConfig}
         >
-          {assets.map(asset => (
+          {sortedAssets.map(asset => (
             <AssetRenderer
               key={asset.id}
               asset={asset}

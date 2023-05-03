@@ -4,7 +4,7 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       NEXT_PUBLIC_CLOUDINARY_CLOUDNAME: string
-      
+
       COMMERCETOOLS_AUTHURL: string
       COMMERCETOOLS_CLIENTID: string
       COMMERCETOOLS_CLIENTSECRET: string
@@ -55,7 +55,7 @@ export type AssetInfo = {
   updates: number
 }
 
-export type CtPrice = { 
+export type CtPrice = {
   centAmount: number
   currencyCode: string
 }
@@ -73,4 +73,9 @@ export type CtAsset = {
     'en-US': string
   }
   tags: string[]
+  custom: {
+    fields: {
+      sortOrder: string
+    }
+  }
 }
