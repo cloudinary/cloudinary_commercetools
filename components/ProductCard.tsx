@@ -1,11 +1,4 @@
-import AssetImage from 'components/AssetImage'
-import {
-  getAssetUri,
-  getName,
-  getPrice,
-  getImageAssets,
-  getAllAssets,
-} from 'lib/commercetools/productHelper'
+import {getName, getPrice, getAllAssets} from 'lib/commercetools/productHelper'
 import Image from 'next/image'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
