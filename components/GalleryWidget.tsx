@@ -30,11 +30,12 @@ const GalleryWidget = ({productId, variant}: GalleryWidgetProps) => {
       const assets = getUniqueAssets(variant.assets)
 
       // 2. Sort by sortOrder (or if empty, in order of appearance)
+      const sortPropertyName = process.env.NEXT_PUBLIC_COMMERCETOOLS_PROPERTY_SORT
       const sortedAssets = assets.sort((a, b) => {
-        const sortOrderA = a.custom?.fields?.sortOrder ?? '';
-        const sortOrderB = b.custom?.fields?.sortOrder ?? '';
+        const sortOrderA = (a.custom?.fields as any)[sortPropertyName];
+        const sortOrderB = (b.custom?.fields as any)[sortPropertyName];
     
-        if (sortOrderA !== '' && sortOrderB !== '' ) {
+        if (sortOrderA && sortOrderB) {
           return sortOrderA > sortOrderB ? 1 : -1
         } else {
           return 1

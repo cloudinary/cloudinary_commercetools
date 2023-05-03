@@ -49,8 +49,8 @@ const Carousel = ({assets}: CarouselProps) => {
   }
 
   const sortedAssets = assets.sort((a, b) => {
-    const sortOrderA = a.custom?.fields?.sortOrder ?? '';
-    const sortOrderB = b.custom?.fields?.sortOrder ?? '';
+    const sortOrderA = (a.custom?.fields as any)?.sortOrder ?? '';
+    const sortOrderB = (b.custom?.fields as any)?.sortOrder ?? '';
 
     return sortOrderA > sortOrderB ? 1 : -1
   })

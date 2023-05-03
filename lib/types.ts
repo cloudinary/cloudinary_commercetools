@@ -11,6 +11,8 @@ declare global {
 
       COMMERCETOOLS_APIURL: string
       COMMERCETOOLS_PROJECTKEY: string
+
+      NEXT_PUBLIC_COMMERCETOOLS_PROPERTY_SORT: string
     }
   }
 
@@ -74,8 +76,6 @@ export type CtAsset = {
   }
   tags: string[]
   custom: {
-    fields: {
-      sortOrder: string
-    }
+    fields: {}
   }
 }
