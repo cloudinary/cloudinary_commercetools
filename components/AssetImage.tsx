@@ -19,6 +19,7 @@ const cloudinaryConfig = new CloudConfig({
 
 const AssetImage = ({
   publicId,
+  altText,
   width,
   height,
   isThumbnail = false,
@@ -107,7 +108,7 @@ const AssetImage = ({
   }, [publicId, isThumbnail])
 
   if (isThumbnail) {
-    return <div>{image && <AdvancedImage cldImg={image} />}</div>
+    return <div>{image && <AdvancedImage cldImg={image} alt={altText ?? ''}/>}</div>
   }
 
   return (
@@ -117,6 +118,7 @@ const AssetImage = ({
           <AdvancedImage
             cldImg={image}
             plugins={[responsive(), placeholder()]}
+            alt={altText ?? ''}
           />
         )}
       </div>

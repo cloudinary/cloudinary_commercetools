@@ -45,7 +45,7 @@ const AssetRenderer = ({
       {isImage && (
         <AssetImage
           publicId={asset.sources[0].uri}
-          altText={asset.description?.['en-US'] ?? ''}
+          altText={asset.description?.['en-US']}
           isThumbnail={isThumbnail}
           width={width}
           height={height}
