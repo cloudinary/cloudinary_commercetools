@@ -86,3 +86,23 @@ export const getAllVariants = (product: any) => [
   product?.masterData?.current?.masterVariant,
   ...product?.masterData?.current?.variants,
 ]
+
+export const convertToMediaAsset = (asset: CtAsset) => {
+  const spinSetTags = asset.tags?.filter(x => x.includes('spinset')) ?? []
+  let mediaType: 'image' | 'video' | 'spin' | '3d' = 'image'
+  if (spinSetTags.length > 0) {
+    mediaType = 'spin'
+  } else if (asset.sources[0].contentType?.startsWith('video')) {
+    mediaType =  'video'
+  } else if (asset.sources[0].contentType?.startsWith('image/glb')) {
+    mediaType =  '3d'
+  }
+
+  return (mediaType === 'spin') ? {
+    tag: spinSetTags[0],
+    mediaType: 'spin'
+  } : {
+    publicId: asset.sources[0].uri,
+    mediaType,
+  }
+}

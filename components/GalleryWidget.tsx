@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { getUniqueAssets } from 'lib/commercetools/productHelper'
+import { convertToMediaAsset, getUniqueAssets } from 'lib/commercetools/productHelper'
 
 type GalleryWidgetProps = {
   productId: string
@@ -30,24 +30,7 @@ const GalleryWidget = ({productId, variant}: GalleryWidgetProps) => {
       const assets = getUniqueAssets(variant.assets, true)
    
       // 2. Extract data to feed to galleryWidget
-      const mediaAssets = assets.map(asset => {
-        const spinSetTags = asset.tags?.filter(x => x.includes('spinset')) ?? []
-        const isSpinset = spinSetTags.length > 0
-        const isVideo =
-          !isSpinset && asset.sources[0].contentType?.startsWith('video')
-
-        if (isSpinset) {
-          return {
-            tag: spinSetTags[0],
-            mediaType: 'spin'
-          }
-        } else {
-          return {
-            publicId: asset.sources[0].uri,
-            mediaType: isVideo ? 'video' : 'image'
-          }
-        }
-      })
+      const mediaAssets = assets.map(asset => convertToMediaAsset(asset))
 
       // console.log('GalleryWidget', {galleryName, mediaAssets})
       const myGallery = window.cloudinary.galleryWidget({
