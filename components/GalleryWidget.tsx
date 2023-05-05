@@ -27,23 +27,10 @@ const GalleryWidget = ({productId, variant}: GalleryWidgetProps) => {
   useEffect(() => {
     if (isLoaded && window.cloudinary) {
       // 1. Get "unique" assets (i.e. avoid showing more than 1 image of the same spinset)
-      const assets = getUniqueAssets(variant.assets)
-
-      // 2. Sort by sortOrder (or if empty, in order of appearance)
-      const sortPropertyName = process.env.NEXT_PUBLIC_COMMERCETOOLS_PROPERTY_SORT || 'sortNumber'
-      const sortedAssets = assets.sort((a, b) => {
-        const sortOrderA = (a.custom?.fields || {} as any)[sortPropertyName];
-        const sortOrderB = (b.custom?.fields || {} as any)[sortPropertyName];
-    
-        if (sortOrderA && sortOrderB) {
-          return sortOrderA > sortOrderB ? 1 : -1
-        } else {
-          return 1
-        }
-      })
-    
-      // 3. Extract data to feed to galleryWidget
-      const mediaAssets = sortedAssets.map(asset => {
+      const assets = getUniqueAssets(variant.assets, true)
+   
+      // 2. Extract data to feed to galleryWidget
+      const mediaAssets = assets.map(asset => {
         const spinSetTags = asset.tags?.filter(x => x.includes('spinset')) ?? []
         const isSpinset = spinSetTags.length > 0
         const isVideo =

@@ -12,7 +12,7 @@ export type ProductCardProps = {
 
 const ProductCard = ({product, isSmall = false}: ProductCardProps) => {
   const {locale} = useRouter()
-  const imageAssets = getAllAssets(product)
+  const imageAssets = getAllAssets(product, true)
 
   return (
     <div className=" overflow-hidden transition-all duration-300 ">

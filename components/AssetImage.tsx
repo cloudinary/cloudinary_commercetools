@@ -4,9 +4,11 @@ import {fill, thumbnail} from '@cloudinary/url-gen/actions/resize'
 import {AssetInfo} from 'lib/types'
 import {useEffect, useState} from 'react'
 import classNames from 'classnames'
+import { edit } from '@cloudinary/url-gen/actions/animated'
 
 export type AssetImageProps = {
   publicId: string | undefined
+  format: string
   altText?: string
   width?: number
   height?: number
@@ -19,6 +21,7 @@ const cloudinaryConfig = new CloudConfig({
 
 const AssetImage = ({
   publicId,
+  format,
   altText,
   width,
   height,
@@ -99,6 +102,14 @@ const AssetImage = ({
       )
     }
 
+    if (format.startsWith('image/glb')) {
+      cldImage
+        .format('webp')
+        .backgroundColor('#3448C5')
+        .addFlag('animated')
+        .animated(edit().delay(100))
+    }
+
     setImage(cldImage)
 
     if (!isThumbnail) {
@@ -107,7 +118,7 @@ const AssetImage = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [publicId, isThumbnail])
 
-  if (isThumbnail) {
+  if (isThumbnail || format.startsWith('image/glb')) {
     return <div>{image && <AdvancedImage cldImg={image} alt={altText ?? ''}/>}</div>
   }
 

@@ -25,11 +25,13 @@ export const getPrice = (product: any): CtPrice | undefined => {
   return undefined
 }
 
-export const getAllAssets = (product: any): CtAsset[] => 
-  product?.masterData?.current?.masterVariant?.assets ?? []
+export const getAllAssets = (product: any, sort?: boolean): CtAsset[] => {
+  const assets = product?.masterData?.current?.masterVariant?.assets ?? []
 
+  return sort ? sortAssets(assets) : assets
+}
 
-export const getUniqueAssets = (assets: CtAsset[]): CtAsset[] => {
+export const getUniqueAssets = (assets: CtAsset[], sort?: boolean): CtAsset[] => {
   // Only return unique assets, avoiding to return multiple assets from the same spinset
   const uniqueAssets: CtAsset[] = []
   const spinsets: string[] = []
@@ -47,7 +49,23 @@ export const getUniqueAssets = (assets: CtAsset[]): CtAsset[] => {
     }
   })
 
-  return uniqueAssets
+  return sort ? sortAssets(uniqueAssets) : uniqueAssets
+}
+
+export const sortAssets = (assets: CtAsset[]): CtAsset[] => {
+  const sortPropertyName = process.env.NEXT_PUBLIC_COMMERCETOOLS_PROPERTY_SORT || 'sortNumber'
+  return assets.sort((a, b) => {
+    const sortOrderA = (a.custom?.fields || {} as any)[sortPropertyName];
+    const sortOrderB = (b.custom?.fields || {} as any)[sortPropertyName];
+
+    if (sortOrderA && sortOrderB) {
+      return sortOrderA > sortOrderB ? 1 : -1
+    } else if (sortOrderA) {
+      return -1
+    } else {
+      return 1
+    }
+  })
 }
 
 export const getImageAssets = (product: any): CtAsset[] =>
