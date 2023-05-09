@@ -60,13 +60,13 @@ export default function NavBar() {
               }`}
             >
               <ul className="flex flex-col items-center gap-6 md:flex-row">
-                <li>What&rsquo;s new</li>
-                <li>About</li>
                 <li>
                   <Link href="/products" className="hover:text-orangeNew">
                     Shop
                   </Link>
                 </li>
+                <li>What&rsquo;s new</li>
+                <li>About</li>
                 <li>Gifts</li>
                 <li>
                   <div className="relative h-[40px] w-[240px] xl:ml-60">
