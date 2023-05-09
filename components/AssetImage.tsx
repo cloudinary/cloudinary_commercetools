@@ -168,7 +168,7 @@ const AssetImage = ({
             <div className="">{Math.round(info.input.bytes / 1024)} kB</div>
             <div className="h-[10px] w-full bg-redNew"></div>
             <div className="mt-4">
-              Optimized ({info.output.width} x {info.output.height})
+              With Cloudinary ({info.output.width} x {info.output.height})
             </div>
             <div
               className="h-[10px] bg-blueNew"
