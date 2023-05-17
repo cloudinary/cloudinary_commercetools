@@ -25,7 +25,7 @@ const getToken = async () => {
 }
 
 export const fetchAllProducts = async (): Promise<any[]> => {
-  const url = `${process.env.COMMERCETOOLS_APIURL}/${process.env.COMMERCETOOLS_PROJECTKEY}/products?limit=200&expand=productType`
+  const url = `${process.env.COMMERCETOOLS_APIURL}/${process.env.COMMERCETOOLS_PROJECTKEY}/products?limit=25&expand=productType`
 
   const token = await getToken()
   const response = await fetch(url, {
@@ -43,9 +43,7 @@ export const fetchRelatedProducts = async (numberOfProducts: number): Promise<an
   const allProducts = await fetchAllProducts()
   if (allProducts && Array.isArray(allProducts)) {
     return allProducts
-      // Only take the first 100, for performance reasons
       .slice(0, 100)
-      // Add a random number to all elements
       .map(x => {
         return {
           ...x,
