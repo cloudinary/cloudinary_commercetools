@@ -1,3 +1,13 @@
+## Cloudinary commercetools demo app repo
+
+This source code is the basis for the [Cloudinary demo app](https://cloudinary-commercetools-demo.netlify.app), a frontend implementation of the Cloudinary commercetools extension. It includes ready-made React components that you can use to display assets on your website or app.
+
+For a full description of the Cloudinary commercetools extension including setup and installation instructions, an operational overview, and a developers guide, see Cloudinary’s [documentation](https://cloudinary.com/documentation/commercetools_integration#the_cloudinary_demo_app).
+
+To find out how to configure Amazon AWS, Google Cloud Platform or Microsoft Azure to host the serverless microservice that integrates Cloudinary assets in your commercetools instance, see the [cloudinary_commercetools_mach](https://github.com/cloudinary/cloudinary_commercetools_mach/tree/main) repository on GitHub.
+
+### Instructions
+
 To get started: `npm install`
 
 Make sure you have
