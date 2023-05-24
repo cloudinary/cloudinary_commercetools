@@ -1,6 +1,7 @@
 const getToken = async () => {
-  const bodyParams = new URLSearchParams()
-  bodyParams.append('grant_type', 'client_credentials')
+  const bodyParams = new URLSearchParams();
+  bodyParams.append('grant_type', 'client_credentials');
+  bodyParams.append('scope', `view_products:${process.env.COMMERCETOOLS_PROJECTKEY}`);
 
   const response = await fetch(
     `${process.env.COMMERCETOOLS_AUTHURL}/oauth/token`,
