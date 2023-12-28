@@ -1,5 +1,6 @@
 import {AdvancedImage, placeholder, responsive} from '@cloudinary/react'
 import {CloudConfig, CloudinaryImage} from '@cloudinary/url-gen'
+import { dpr } from "@cloudinary/url-gen/actions/delivery";
 import {fill, thumbnail} from '@cloudinary/url-gen/actions/resize'
 import {AssetInfo} from 'lib/types'
 import {useEffect, useState} from 'react'
@@ -100,7 +101,7 @@ const AssetImage = ({
           .height(height ?? 700)
           .width(width ?? 600),
       )
-      .dpr('2')
+      .delivery(dpr("2.0"))      
       .quality('auto')
       .format('auto');
     }
