@@ -1,6 +1,10 @@
 import {AdvancedImage, placeholder, responsive} from '@cloudinary/react'
 import {CloudConfig, CloudinaryImage} from '@cloudinary/url-gen'
 import { dpr } from "@cloudinary/url-gen/actions/delivery";
+import { format } from "@cloudinary/url-gen/actions/delivery";
+import { quality } from "@cloudinary/url-gen/actions/delivery";
+import { auto } from "@cloudinary/url-gen/qualifiers/format";
+import { autoGood } from "@cloudinary/url-gen/qualifiers/quality";
 import {fill, thumbnail} from '@cloudinary/url-gen/actions/resize'
 import {AssetInfo} from 'lib/types'
 import {useEffect, useState} from 'react'
@@ -102,8 +106,7 @@ const AssetImage = ({
           .width(width ?? 600),
       )
       .delivery(dpr("2.0"))      
-      .quality('auto')
-      .format('auto');
+      .delivery(quality(autoGood()))
     }
 
     if (format.startsWith('image/glb')) {
