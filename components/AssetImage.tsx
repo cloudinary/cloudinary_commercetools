@@ -98,6 +98,7 @@ const AssetImage = ({
           .height(height ?? 142),
       )
     } else {
+      // modified image params
       cldImage.resize(
         fill()
           .height(height ?? 700)
