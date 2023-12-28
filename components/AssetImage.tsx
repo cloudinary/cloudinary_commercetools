@@ -100,6 +100,9 @@ const AssetImage = ({
           .height(height ?? 700)
           .width(width ?? 600),
       )
+      .dpr('2')
+      .quality('auto')
+      .format('auto');
     }
 
     if (format.startsWith('image/glb')) {
