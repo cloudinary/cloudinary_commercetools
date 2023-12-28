@@ -3,6 +3,7 @@ import {CloudConfig, CloudinaryImage} from '@cloudinary/url-gen'
 import { dpr } from "@cloudinary/url-gen/actions/delivery";
 import { quality } from "@cloudinary/url-gen/actions/delivery";
 import { autoGood } from "@cloudinary/url-gen/qualifiers/quality";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
 import {fill, thumbnail} from '@cloudinary/url-gen/actions/resize'
 import {AssetInfo} from 'lib/types'
 import {useEffect, useState} from 'react'
@@ -102,7 +103,8 @@ const AssetImage = ({
       cldImage.resize(
         fill()
           .height(height ?? 700)
-          .width(width ?? 600),
+          .width(width ?? 600)
+          .gravity(autoGravity()),
       )
       .delivery(dpr("2.0"))      
       .delivery(quality(autoGood()))
