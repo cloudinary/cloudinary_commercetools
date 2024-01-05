@@ -6,13 +6,13 @@ export interface HeroProps {
   description?: string
 }
 
-const Hero = ({image, title, description}: HeroProps) => {
+const Hero = ({title, description}: HeroProps) => {
   return (
     <div className="relative h-[300px] w-full overflow-hidden lg:h-[500px] 3xl:h-[700px]">
       <div className="h-full w-full overflow-hidden">
         <Image
-          src={image}
-          alt=""
+          src="https://res.cloudinary.com/commercetools-demo/image/upload/f_auto,q_auto,w_2048/ecommsamples/hero.png"
+          alt="Our branded shoes"
           fill
           className="object-cover animate-in fade-in duration-1000"
         ></Image>
