@@ -11,7 +11,7 @@ type HomePageProps = PageProps & {
 
 function HomePage(props: HomePageProps) {
   useEffect(() => {
-    document.title = "Dynamic Title";
+    document.title = "Home";
   }, []);
   return (
     <div>

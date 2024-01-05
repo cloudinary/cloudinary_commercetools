@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {GetStaticProps} from 'next'
 import {PageProps, Params} from '../../lib/types'
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
@@ -14,6 +14,9 @@ type ProductDetailPageProps = PageProps & {
 }
 
 function ProductDetailPage(props: ProductDetailPageProps) {
+  useEffect(() => {
+    console.log(props)
+  });
   return (
     <div>
       <ProductDetailPageLayout {...props} />
