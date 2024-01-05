@@ -65,9 +65,21 @@ export default function NavBar() {
                     Shop
                   </Link>
                 </li>
-                <li>What&rsquo;s new</li>
-                <li>About</li>
-                <li>Gifts</li>
+                <li>
+                  <Link href="/products" className="hover:text-orangeNew">
+                    What&rsquo;s new
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://cloudinary.com/documentation/commercetools_integration" className="hover:text-orangeNew">
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products" className="hover:text-orangeNew">
+                    Gifts
+                  </Link>
+                </li>
                 <li>
                   <div className="relative h-[40px] w-[240px] xl:ml-60">
                     <div className="absolute h-full w-full rounded-[35px] bg-orangeNew opacity-40"></div>
