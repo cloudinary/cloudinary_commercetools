@@ -15,8 +15,8 @@ type ProductDetailPageProps = PageProps & {
 
 function ProductDetailPage(props: ProductDetailPageProps) {
   useEffect(() => {
-    console.log(props)
-  });
+    document.title = {...props.product.masterData.current.name["en-US"]};
+  }, []);
   return (
     <div>
       <ProductDetailPageLayout {...props} />
