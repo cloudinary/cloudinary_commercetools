@@ -70,8 +70,8 @@ export default function NavBar() {
                 <li>Gifts</li>
                 <li>
                   <div className="relative h-[40px] w-[240px] xl:ml-60">
-                    <div className="absolute h-[40px] w-[240px] rounded-[35px] bg-orangeNew opacity-40"></div>
-                    <div className="absolute flex h-[35px] items-center gap-4	 pl-4 xl:h-[40px] 3xl:h-[50px]">
+                    <div className="absolute h-full w-full rounded-[35px] bg-orangeNew opacity-40"></div>
+                    <div className="absolute flex h-full items-center gap-4	 pl-4 xl:h-full 3xl:h-full">
                       <svg
                         width="19"
                         height="19"
@@ -93,7 +93,7 @@ export default function NavBar() {
                           strokeLinecap="round"
                         />
                       </svg>
-                      Search
+                      <span className="text-black">Search</span>
                     </div>
                   </div>
                 </li>
