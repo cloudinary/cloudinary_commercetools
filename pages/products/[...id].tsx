@@ -15,7 +15,8 @@ type ProductDetailPageProps = PageProps & {
 
 function ProductDetailPage(props: ProductDetailPageProps) {
   useEffect(() => {
-  console.log(...props.product.masterData.current.name["en-US"])  });
+    document.title = props.product.masterData.current.name["en-US"];
+  }, [props.product.masterData]); // Include the dependency in the array
   return (
     <div>
       <ProductDetailPageLayout {...props} />
