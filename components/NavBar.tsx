@@ -12,7 +12,7 @@ export default function NavBar() {
             <div className="flex items-center justify-between py-3 md:block md:py-5">
               <div className="text-2xl font-medium">
                 <Link href="/" className="hover:text-orangeNew">
-                  Rêvasser
+                  Home
                 </Link>
               </div>
               <div className="md:hidden">
