@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {GetStaticProps} from 'next'
 import {PageProps, Params} from '../lib/types'
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations'
@@ -10,6 +10,9 @@ type HomePageProps = PageProps & {
 }
 
 function HomePage(props: HomePageProps) {
+  useEffect(() => {
+    document.title = "Dynamic Title";
+  }, []);
   return (
     <div>
       <HomePageLayout products={props.products} />
