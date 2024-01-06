@@ -8,10 +8,11 @@ type HomePageLayoutProps = {
 const HomePageLayout = ({products}: HomePageLayoutProps) => (
   <>
     <Hero
-      image="/assets/hero.png"
+      public_id="ecommsamples/hero"
       title="Happy Valentines Day!"
       description="Celebrate Valentine's Day with our special Valentine's Day kits"
-    ></Hero>
+      width={2048} // No curly braces needed for numerical value
+    />
     <ProductList products={products} onTheHomepage />
   </>
 )
