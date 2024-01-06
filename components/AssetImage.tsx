@@ -108,6 +108,7 @@ const AssetImage = ({
       )
       .delivery(dpr("2.0"))      
       .delivery(quality(autoGood()))
+      .format('auto')
     }
 
     if (format.startsWith('image/glb')) {
