@@ -20,7 +20,7 @@ export type AssetImageProps = {
 }
 
 const cloudinaryConfig = new CloudConfig({
-  cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
+  cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME
 })
 
 const AssetImage = ({
@@ -89,7 +89,8 @@ const AssetImage = ({
       analytics: false,      
       queryParams: {
         _i: 'AN'
-      }
+      },
+      privateCdn: true
     })
 
     if (isThumbnail) {
