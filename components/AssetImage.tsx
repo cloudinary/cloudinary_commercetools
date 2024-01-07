@@ -1,5 +1,9 @@
 import {AdvancedImage, placeholder, responsive} from '@cloudinary/react'
 import {CloudConfig, CloudinaryImage} from '@cloudinary/url-gen'
+import { dpr } from "@cloudinary/url-gen/actions/delivery";
+import { quality } from "@cloudinary/url-gen/actions/delivery";
+import { autoGood } from "@cloudinary/url-gen/qualifiers/quality";
+import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
 import {fill, thumbnail} from '@cloudinary/url-gen/actions/resize'
 import {AssetInfo} from 'lib/types'
 import {useEffect, useState} from 'react'
@@ -16,7 +20,7 @@ export type AssetImageProps = {
 }
 
 const cloudinaryConfig = new CloudConfig({
-  cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
+  cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME
 })
 
 const AssetImage = ({
@@ -85,7 +89,8 @@ const AssetImage = ({
       analytics: false,      
       queryParams: {
         _i: 'AN'
-      }
+      },
+      privateCdn: true
     })
 
     if (isThumbnail) {
@@ -95,11 +100,16 @@ const AssetImage = ({
           .height(height ?? 142),
       )
     } else {
+      // modified image params
       cldImage.resize(
         fill()
           .height(height ?? 700)
-          .width(width ?? 600),
+          .width(width ?? 600)
+          .gravity(autoGravity()),
       )
+      .delivery(dpr("2.0"))      
+      .delivery(quality(autoGood()))
+      .format('auto')
     }
 
     if (format.startsWith('image/glb')) {

@@ -30,7 +30,9 @@ const AssetVideo = ({
     cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME,
   })
 
-  const video = new CloudinaryVideo(publicId, cloudinaryConfig)
+  const video = new CloudinaryVideo(publicId, cloudinaryConfig, {
+    privateCdn: true
+  })
 
   if (isThumbnail) {
     video

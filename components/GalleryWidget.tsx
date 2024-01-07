@@ -40,7 +40,8 @@ const GalleryWidget = ({productId, variant}: GalleryWidgetProps) => {
         queryParam: "AN",
         spinProps: {
           spinDirection: "clockwise"
-        }
+        },
+        privateCdn: true
       })
 
       myGallery.render()

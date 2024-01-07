@@ -57,7 +57,8 @@ const AssetSpinset = ({
           queryParam: "AN",
           spinProps: {
             spinDirection: "clockwise"
-          }
+          },
+          privateCdn: true
         })
 
         myGallery.render()
